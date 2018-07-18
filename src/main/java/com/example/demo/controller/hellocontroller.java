@@ -54,13 +54,6 @@ public class hellocontroller {
     	
     }
     
-	@Value("${jp.evni.stationId}")
-	private String statinid;
-	
-    @RequestMapping("/test")
-    public String getStationID() {
 
-    	return statinid;
-    }
 
 }

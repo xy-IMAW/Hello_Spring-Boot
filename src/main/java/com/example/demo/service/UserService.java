@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.validation.BindingResult;
 
 import com.example.demo.entity.UserEntity;
+import com.example.demo.model.RoleExample;
+import com.example.demo.model.User;
 
 /**
  * 
@@ -17,5 +19,7 @@ public interface UserService  {
 	public List<UserEntity> getUserList();
 	public String save(UserEntity userEntity,BindingResult result);
 	public List<UserEntity> deleteOne(String id);
+	public UserEntity getUserInfoById(String id);
+	public User getRolesById(Integer id);
 	
 }

@@ -60,8 +60,16 @@ server:
   tomcat:
     uri-encoding: utf-8
     
-jp:
-  evni:
-    stationId: 123456
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.demo.model
+
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
 
 
