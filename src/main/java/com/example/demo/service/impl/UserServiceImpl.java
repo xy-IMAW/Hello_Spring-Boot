@@ -7,19 +7,16 @@ import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
-
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-import com.example.demo.dao.RoleMapper;
 import com.example.demo.dao.UserDao;
-import com.example.demo.dao.UserMapper;
 import com.example.demo.entity.UserEntity;
-import com.example.demo.model.User;
-import com.example.demo.model.UserExample;
 import com.example.demo.service.UserService;
 
 /**
@@ -27,26 +24,22 @@ import com.example.demo.service.UserService;
  *
  */
 @Service
-//@CacheConfig(cacheNames = "user")
+@CacheConfig(cacheNames = "user")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
 	@Autowired
-	private UserMapper userMapper;
-	@Autowired
-	private RoleMapper rolemapper;
-	@Autowired
 	private MessageSource messagesource;
 	@Override
-	//@Cacheable
+	@Cacheable
 	public List<UserEntity> getUserList() {
 		// TODO 自动生成的方法存根
 		
 		return userDao.findAll();
 	}
 	@Override
-	//@Cacheable
+	@Cacheable
 	public String save(UserEntity userEntity,BindingResult result) {
 		if(result.hasErrors()) {
 			StringBuffer msg = new StringBuffer();
@@ -67,26 +60,10 @@ public class UserServiceImpl implements UserService {
 		return "验证通过，id："+userEntity.getId()+"名称："+userEntity.getName()+"密码："+userEntity.getPassword();
 	}
 	@Override
-	//@Cacheable
+	@Cacheable
 	public List<UserEntity> deleteOne(String id) {
 		userDao.delete(id);
 		return userDao.findAll();
 	}
-	@Override
-	public UserEntity getUserInfoById(String id) {
-		return userDao.findById(id);
-		//return userDao.findById(id);
-	}
-	@Override
-	public User getRolesById(Integer id) {
-		// TODO 自动生成的方法存根
-		UserExample userExample = new UserExample();
-
-		User user = userMapper.selectByPrimaryKey(id);
-		return user;
-		//return rolemapper.selectRolesById(id);
-		//return null;
-	}
-
 
 }

@@ -57,22 +57,7 @@
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>1.3.2</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.mybatis.generator</groupId>
-		    <artifactId>mybatis-generator-core</artifactId>
-		    <version>1.3.5</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper-spring-boot-starter</artifactId>
-			<version>1.1.1</version>
-		</dependency>
+
 
 		<!-- 日志依赖 -->
 		<dependency>
@@ -130,11 +115,11 @@
 		    <version>1.5.14.RELEASE</version>
 		</dependency>
 		<!-- security -->
-<!-- 		<dependency>
+		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-security</artifactId>
 		    <version>2.0.2.RELEASE</version>
-		</dependency> -->
+		</dependency>
 		
 		<!-- poi依赖 HSSF 和  XSSF -->
 		<dependency>
@@ -148,6 +133,10 @@
 		    <version>3.17</version>
 		</dependency>
 		
+<!-- 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+		</dependency> -->
 	</dependencies>
 
 	<build>
@@ -156,16 +145,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-                <groupId>org.mybatis.generator</groupId>
-                <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.2</version>
-                <configuration>
-                    <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
-                    <overwrite>true</overwrite>
-                    <verbose>true</verbose>
-                </configuration>
-            </plugin>
 		</plugins>
 	</build>
 
