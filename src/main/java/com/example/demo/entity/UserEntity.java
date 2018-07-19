@@ -4,16 +4,17 @@
 package com.example.demo.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
+
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,7 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
 @Entity
 @Table(name="user")
 @ApiModel(value = "userInfo")
-public class UserEntity implements Serializable {
+public class UserEntity implements Serializable{
 	/**
 	 * 
 	 */
@@ -42,13 +43,16 @@ public class UserEntity implements Serializable {
 	@NotBlank
 	@Length(min = 2,max = 6)
 	private String name;
-	
+
 	@ApiModelProperty(value = "密码",required = true)
 	@Column(name="password")
 	@Length(min=4)
 	@NotBlank
 	private String password;
 
+
+
+	
 	public UserEntity() {
 		
 	}
@@ -105,6 +109,14 @@ public class UserEntity implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+
+
+
+
+
+
+
 	
 	
 
