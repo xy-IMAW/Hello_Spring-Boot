@@ -3,8 +3,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://119.29.64.81:3306/xy?useUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.jdbc.Driver
-    username: xy
-    password: xy
+    username: 
+    password: 
     #Druid增加配置
     initialSize: 5
     minIdle: 5
