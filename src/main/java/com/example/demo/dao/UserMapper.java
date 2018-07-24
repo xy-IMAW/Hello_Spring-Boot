@@ -31,6 +31,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
-    @Select("select * from user")
+    @Select("select * from user ")
     List<UserEntity> userList();
 }

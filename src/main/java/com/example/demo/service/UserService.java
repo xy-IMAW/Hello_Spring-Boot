@@ -20,6 +20,7 @@ public interface UserService  {
 	public String save(UserEntity userEntity,BindingResult result);
 	public List<UserEntity> deleteOne(String id);
 	public UserEntity getUserInfoById(String id);
-	public User getRolesById(Integer id);
+	public List<User> getUserByName(String name);
+	public long getCountById(String name);
 	
 }

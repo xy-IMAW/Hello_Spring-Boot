@@ -6,6 +6,8 @@ package com.example.demo.service.impl;
 import java.util.List;
 import java.util.Locale;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -30,6 +32,9 @@ import com.example.demo.service.UserService;
 //@CacheConfig(cacheNames = "user")
 public class UserServiceImpl implements UserService {
 
+	private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+
+	
 	@Autowired
 	private UserDao userDao;
 	@Autowired
@@ -64,6 +69,7 @@ public class UserServiceImpl implements UserService {
 			return msg.toString();
 		}
 		userDao.save(userEntity);
+		log.info("验证通过，id："+userEntity.getId()+"名称："+userEntity.getName()+"密码："+userEntity.getPassword());
 		return "验证通过，id："+userEntity.getId()+"名称："+userEntity.getName()+"密码："+userEntity.getPassword();
 	}
 	@Override
@@ -78,14 +84,21 @@ public class UserServiceImpl implements UserService {
 		//return userDao.findById(id);
 	}
 	@Override
-	public User getRolesById(Integer id) {
+	public List<User> getUserByName(String name) {
 		// TODO 自动生成的方法存根
 		UserExample userExample = new UserExample();
-
-		User user = userMapper.selectByPrimaryKey(id);
+		userExample.createCriteria().andNameEqualTo(name);
+		List<User> user = userMapper.selectByExample(userExample);
 		return user;
 		//return rolemapper.selectRolesById(id);
 		//return null;
+	}
+	@Override
+	public long getCountById(String name) {
+		// TODO 自动生成的方法存根
+		UserExample userExample = new UserExample();
+		userExample.createCriteria().andNameEqualTo(name);
+		return userMapper.countByExample(userExample);
 	}
 
 
