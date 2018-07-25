@@ -9,6 +9,8 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 
@@ -29,7 +31,7 @@ import com.example.demo.service.UserService;
  *
  */
 @Service
-//@CacheConfig(cacheNames = "user")
+@CacheConfig(cacheNames = "user")
 public class UserServiceImpl implements UserService {
 
 	private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -51,7 +53,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.findAll();
 	}
 	@Override
-	//@Cacheable
+	@Cacheable
 	public String save(UserEntity userEntity,BindingResult result) {
 		if(result.hasErrors()) {
 			StringBuffer msg = new StringBuffer();
